@@ -7,16 +7,20 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         primaryKey: true,
       },
-      display_name: {
+      displayName: {
+        allowNull: false,
         type: DataTypes.STRING,
       },
       email: {
+        allowNull: false,
         type: DataTypes.STRING,
       },
       password: {
+        allowNull: false,
         type: DataTypes.INTEGER,
       },
       image: {
+        allowNull: false,
         type: DataTypes.STRING,
       }
     },
