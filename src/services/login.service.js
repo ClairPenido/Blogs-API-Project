@@ -2,16 +2,17 @@ const { User } = require('../models');
 const errorGenerate = require('../utils/genericError');
 const auth = require('../middlewares/auth');
 
-const create = async (userInfo) => {
-    const { displayName, email, password, image } = userInfo;
+const create = async (loginInfo) => {
+    const { email } = loginInfo;
   const emailCheck = await User.findOne({ where: { email } }); // email: userInfo.email
-  if (emailCheck) {
-    throw errorGenerate(409, 'User already registered', 'Bad request');
+  if (emailCheck.length === 0) {
+    throw errorGenerate(400, 'Some required fields are missing', 'Empty inputs');
   }
-   const teste = await User.create({ displayName, email, password, image });
-  delete teste.password;
+  if (!emailCheck) {
+    throw errorGenerate(400, 'Invalid fields', 'Invalid field');
+  }
   // aqui que eu retorno o que eu gostaria que estivesse no retorno do thunder
-  return auth.generateToken(teste);
+  return auth.generateToken(emailCheck);
 };
 
 module.exports = {

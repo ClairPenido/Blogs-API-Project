@@ -1,5 +1,4 @@
 const { userSchema } = require('../utils/schemas');
-// const errorGenerate = require('../utils/genericErrorHandler');
 
 const userValidate = (req, res, next) => {
   const user = req.body;
@@ -8,7 +7,6 @@ const userValidate = (req, res, next) => {
   if (error) {
     return res.status(418).json({ message: error.message, type: 'Invalid Entity' });
   }
-
   next();
 };
 
