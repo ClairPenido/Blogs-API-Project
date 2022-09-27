@@ -10,6 +10,27 @@ const createUser = async (req, res, next) => {
   }
 };
 
+const catchAllUsers = async (req, res, next) => {
+  try {
+    const allUsers = await userService.getAllUsers();
+    res.status(200).json(allUsers);
+  } catch (error) {
+    next(error);
+  }
+ };
+
+ const catchUserbyId = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const userbyId = await userService.getUserbyId(id);
+    res.status(200).json(userbyId);
+  } catch (error) {
+    next(error);
+  }
+ };
+
 module.exports = {
   createUser,
+  catchAllUsers,
+  catchUserbyId,
 };

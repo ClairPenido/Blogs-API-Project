@@ -1,6 +1,6 @@
 const { User } = require('../models');
 const errorGenerate = require('../utils/genericError');
-const auth = require('../middlewares/auth');
+const auth = require('../utils/tokenGenerator');
 
 const enterLogin = async (loginInfo) => {
   const { email, password } = loginInfo;

@@ -1,7 +1,7 @@
 const errorMiddleware = (err, req, res, _next) => {
-const { status, type, message } = err;
+const { status, message } = err;
 
-if (status) return res.status(status).json({ type, message });
+if (status) return res.status(status).json({ message });
 
 return res.status(500).json({ message: 'Internal Server Error', error: err.message });
 };
