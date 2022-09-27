@@ -11,10 +11,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      timestamps: false,
-      tableName: 'categories',
-      underscored: true,
-    });
+    },
+    {
+    timestamps: false,
+    tableName: 'categories',
+    underscored: true,
+});
 
   return Category;
 };
