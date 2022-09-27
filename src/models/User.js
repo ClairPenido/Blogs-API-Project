@@ -30,5 +30,10 @@ module.exports = (sequelize, DataTypes) => {
       underscored: true,
     });
 
+    User.hasMany(models.BlogPost, {
+      foreignKey: '',
+      as: 'comments',
+    });
+
   return User;
 };
