@@ -8,10 +8,11 @@ const create = async (userInfo) => {
   if (emailCheck) {
     throw errorGenerate(409, 'User already registered', 'Bad request');
   }
-   const teste = await User.create({ displayName, email, password, image });
-  delete teste.password;
+   const newUser = await User.create({ displayName, email, password, image });
+  delete newUser.dataValues.password;
   // aqui que eu retorno o que eu gostaria que estivesse no retorno do thunder
-  return auth.generateToken(teste);
+  console.log(newUser.dataValues);
+  return auth.generateToken(newUser.dataValues);
 };
 
 module.exports = {
