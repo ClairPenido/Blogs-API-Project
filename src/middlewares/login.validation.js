@@ -5,7 +5,8 @@ const loginValidate = (req, res, next) => {
   const { error } = loginSchema.validate(login);
 
   if (error) {
-    return res.status(400).json({ message: error.message, type: 'Invalid Entity' });
+    return res.status(400)
+    .json({ message: 'Some required fields are missing', type: 'Invalid Entity' });
   }
   next();
 };

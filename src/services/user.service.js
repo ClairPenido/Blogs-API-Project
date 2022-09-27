@@ -11,7 +11,7 @@ const create = async (userInfo) => {
    const newUser = await User.create({ displayName, email, password, image });
   delete newUser.dataValues.password;
   // aqui que eu retorno o que eu gostaria que estivesse no retorno do thunder
-  console.log(newUser.dataValues);
+  // console.log(newUser.dataValues);
   return auth.generateToken(newUser.dataValues);
 };
 
