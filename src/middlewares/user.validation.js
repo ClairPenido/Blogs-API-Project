@@ -5,7 +5,7 @@ const userValidate = (req, res, next) => {
   const { error } = userSchema.validate(user);
 
   if (error) {
-    return res.status(418).json({ message: error.message, type: 'Invalid Entity' });
+    return res.status(400).json({ message: error.message, type: 'Invalid Entity' });
   }
   next();
 };
