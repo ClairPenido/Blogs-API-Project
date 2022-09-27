@@ -15,12 +15,13 @@ const create = async (userInfo) => {
 };
 
 const getAllUsers = async () => {
-  const allUsers = await User.findAll(); 
+  const allUsers = await User.findAll({
+    attributes: { exclude: ['password'] } }); 
   return allUsers;
 };
 
 const getUserbyId = async (id) => {
-  const userbyId = await User.findOne({ where: { id } });
+  const userbyId = await User.findOne({ attributes: { exclude: ['password'] }, where: { id } });
   if (!userbyId) {
     throw errorGenerate(404, 'User does not exist', 'User does not exist');
   }
