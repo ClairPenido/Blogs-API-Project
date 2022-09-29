@@ -7,7 +7,7 @@ module.exports = {
       post_id: { // FK + PK
         type: DataTypes.INTEGER,
         references: {
-          model: 'users',
+          model: 'blog_posts',
           key: 'id',
         },
         onUpdate: 'CASCADE',
