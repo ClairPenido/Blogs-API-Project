@@ -15,7 +15,7 @@ console.log('token:', token);
     const payload = jwt.verify(token, JWT_SECRET); // verifica se o token é valido
 
     req.user = payload;
-    console.log('req', req.user);
+    // console.log('req', req.user);
     return next();
   } catch (err) {
     err.message = 'Expired or invalid token';
